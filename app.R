@@ -53,7 +53,7 @@ p {
   ),
   fluidRow(
     column(12,
-           h4("Compilation Embedded in R"),
+           h4("C++ Code for use in R"),
            aceEditor(
              outputId = "rcpp_code_text",
              theme = "tomorrow_night_blue",
