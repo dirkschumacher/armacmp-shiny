@@ -52,13 +52,15 @@ p {
            ))
   ),
   fluidRow(
-    column(12, aceEditor(
-      outputId = "rcpp_code_text",
-      theme = "tomorrow_night_blue",
-      mode = "r",
-      readOnly = TRUE,
-      value = initial_fun
-    ))
+    column(12,
+           h4("Compilation Embedded in R"),
+           aceEditor(
+             outputId = "rcpp_code_text",
+             theme = "tomorrow_night_blue",
+             mode = "r",
+             readOnly = TRUE,
+             value = initial_fun
+           ))
   )
 )
 
