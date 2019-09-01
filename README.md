@@ -3,7 +3,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-A small shiny app to live translate C++ code to R. 
+A small shiny app to live translate C++ code to R.
 
 Deploy at your own risk as user input code is evaluated.
 
@@ -23,10 +23,6 @@ remotes::install_github("dirkschumacher/armacmp")
 # Launch the translator application.
 shiny::runGitHub("dirkschumacher/armacmp-shiny")
 ```
-
-## Author
-
-[Dirk Schumacher](http://www.dirk-schumacher.net)
 
 ## License
 
