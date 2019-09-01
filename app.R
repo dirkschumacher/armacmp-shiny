@@ -33,19 +33,23 @@ p {
     )
   ),
   fluidRow(
-    column(6, aceEditor(
-      outputId = "r_code",
-      theme = "tomorrow_night_blue",
-      mode = "r",
-      value = initial_fun
-    )),
-    column(6, aceEditor(
-      outputId = "cpp_code",
-      theme = "tomorrow_night_blue",
-      mode = "c_cpp",
-      readOnly = TRUE,
-      value = initial_fun
-    ))
+    column(6,
+           h4("R Code"),
+           aceEditor(
+             outputId = "r_code",
+             theme = "tomorrow_night_blue",
+             mode = "r",
+             value = initial_fun
+           )),
+    column(6,
+           h4("Translated to C++"),
+           aceEditor(
+             outputId = "cpp_code",
+             theme = "tomorrow_night_blue",
+             mode = "c_cpp",
+             readOnly = TRUE,
+             value = initial_fun
+           ))
   ),
   fluidRow(
     column(12, aceEditor(
