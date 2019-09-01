@@ -82,11 +82,10 @@ server <- function(input, output, session) {
   rcpp_code <- reactive({
     req(is.character(cpp_code()))
 
-    header = 'Rcpp::cppFunction("\n'
-    footer = '", depends = "RcppArmadillo", plugins = "cpp11")'
+    header <- 'Rcpp::cppFunction("\n'
+    footer <- '", depends = "RcppArmadillo", plugins = "cpp11")'
 
     paste0(header, paste0(cpp_code(), collapse = "\n"), footer, collapse = "\n")
-
   })
 
   observe({
