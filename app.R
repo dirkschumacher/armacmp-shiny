@@ -21,14 +21,14 @@ p {
 }
       "))
   ),
-  titlePanel("Armacmp compiler tools"),
+  titlePanel("Translate and Compile R code into C++"),
   fluidRow(
     column(
       12,
       p(
-        "Use the R package ",
+        "R code is translated into C++ using the",
         a("armacmp", href = "https://github.com/dirkschumacher/armacmp"),
-        " to compile R to C++."
+        " R package."
       )
     )
   ),
