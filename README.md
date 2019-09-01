@@ -23,3 +23,11 @@ remotes::install_github("dirkschumacher/armacmp")
 # Launch the translator application.
 shiny::runGitHub("dirkschumacher/armacmp-shiny")
 ```
+
+## Author
+
+[Dirk Schumacher](http://www.dirk-schumacher.net)
+
+## License
+
+MIT 
