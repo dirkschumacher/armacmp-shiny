@@ -13,7 +13,7 @@ ui <- fluidPage(
 body {
   background-color: black;
 }
-h2 {
+h2,h4 {
   color: white;
 }
 p {
@@ -21,40 +21,46 @@ p {
 }
       "))
   ),
-  titlePanel("Armacmp compiler tools"),
+  titlePanel("Translate and Compile R code into C++"),
   fluidRow(
     column(
       12,
       p(
-        "Use the R package ",
+        "R code is translated into C++ using the",
         a("armacmp", href = "https://github.com/dirkschumacher/armacmp"),
-        " to compile R to C++."
+        " R package."
       )
     )
   ),
   fluidRow(
-    column(6, aceEditor(
-      outputId = "r_code",
-      theme = "tomorrow_night_blue",
-      mode = "r",
-      value = initial_fun
-    )),
-    column(6, aceEditor(
-      outputId = "cpp_code",
-      theme = "tomorrow_night_blue",
-      mode = "c_cpp",
-      readOnly = TRUE,
-      value = initial_fun
-    ))
+    column(6,
+           h4("R Code"),
+           aceEditor(
+             outputId = "r_code",
+             theme = "tomorrow_night_blue",
+             mode = "r",
+             value = initial_fun
+           )),
+    column(6,
+           h4("Translated to C++"),
+           aceEditor(
+             outputId = "cpp_code",
+             theme = "tomorrow_night_blue",
+             mode = "c_cpp",
+             readOnly = TRUE,
+             value = initial_fun
+           ))
   ),
   fluidRow(
-    column(12, aceEditor(
-      outputId = "rcpp_code_text",
-      theme = "tomorrow_night_blue",
-      mode = "r",
-      readOnly = TRUE,
-      value = initial_fun
-    ))
+    column(12,
+           h4("C++ Code for use in R"),
+           aceEditor(
+             outputId = "rcpp_code_text",
+             theme = "tomorrow_night_blue",
+             mode = "r",
+             readOnly = TRUE,
+             value = initial_fun
+           ))
   )
 )
 
@@ -72,14 +78,14 @@ server <- function(input, output, session) {
       "[compiler error]"
     })
   })
+
   rcpp_code <- reactive({
     req(is.character(cpp_code()))
-    paste0(deparse(bquote(
-      Rcpp::cppFunction(.(cpp_code()),
-        depends = "RcppArmadillo",
-        plugins = "cpp11"
-      )
-    )), collapse = "\n")
+
+    header <- 'Rcpp::cppFunction("\n'
+    footer <- '", depends = "RcppArmadillo", plugins = "cpp11")'
+
+    paste0(header, paste0(cpp_code(), collapse = "\n"), footer, collapse = "\n")
   })
 
   observe({
