@@ -13,7 +13,7 @@ ui <- fluidPage(
 body {
   background-color: black;
 }
-h2 {
+h2,h4 {
   color: white;
 }
 p {
