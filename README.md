@@ -15,7 +15,7 @@ To obtain a copy for your local computer, please use:
 
 ```r
 # Install required packages
-install.packages(c("shiny", "remotes"))
+install.packages(c("shiny", "remotes", "shinyAce"))
 
 # Install armacmp
 remotes::install_github("dirkschumacher/armacmp")
